@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 
   error: string = '';
 
-  constructor(private sessionService: SessionService) { }
+  constructor(public sessionService: SessionService) { }
 
   ngOnInit() {
   }
