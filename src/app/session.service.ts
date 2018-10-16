@@ -14,4 +14,8 @@ export class SessionService {
   public login() {
     this._isLoggedIn = true;
   }
+
+  public logout() {
+    this._isLoggedIn = false;
+  }
 }
