@@ -1,3 +1,6 @@
+<button mat-icon-button class="add-button" smat-icon-button (click)="onAddClick()">
+  <mat-icon>add</mat-icon>
+</button>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -6,25 +9,60 @@
   <!-- Position Column -->
   <ng-container matColumnDef="username">
     <th mat-header-cell *matHeaderCellDef>Benutzername</th>
-    <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="!element.isEdit">{{element.username}}</span>
+        <mat-form-field *ngIf="element.isEdit" class="form-field">
+          <input matInput [(ngModel)]="element.username">
+        </mat-form-field>
+    </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="password">
     <th mat-header-cell *matHeaderCellDef>Passwort</th>
-    <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="!element.isEdit">{{element.password}}</span>
+      <mat-form-field *ngIf="element.isEdit" class="form-field">
+        <input matInput [(ngModel)]="element.password">
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef>E-Mail</th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    <td mat-cell *matCellDef="let element">
+      <span *ngIf="!element.isEdit">{{element.email}}</span>
+      <mat-form-field *ngIf="element.isEdit" class="form-field">
+        <input matInput [(ngModel)]="element.email">
+      </mat-form-field>
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef>Typ</th>
-    <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    <th mat-header-cell *matHeaderCellDef class="type-column">Typ</th>
+    <td mat-cell *matCellDef="let element" class="type-column">
+      <span *ngIf="!element.isEdit">{{element.type}}</span>
+      <mat-select *ngIf="element.isEdit" [(ngModel)]="element.type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="action-column">Aktionen</th>
+    <td mat-cell *matCellDef="let element" class="action-column">  
+      <button mat-icon-button class="table-buttons" (click)="element.isEdit = !element.isEdit">
+        <mat-icon *ngIf="!element.isEdit">edit</mat-icon>
+        <mat-icon *ngIf="element.isEdit">check</mat-icon>
+      </button>
+      <button mat-icon-button class="table-buttons" (click)="onDeleteClick(element)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

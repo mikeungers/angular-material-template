@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatListModule, MatCardModule,
-  MatInputModule, MatDialogModule, MatMenuModule, MatTableModule } from '@angular/material';
+  MatInputModule, MatDialogModule, MatMenuModule, MatTableModule, MatSelectModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -24,10 +25,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, 
-    MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatMenuModule, MatTableModule,
+    MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatMenuModule, MatTableModule, MatSelectModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: false } // <-- debugging purposes only
     )
   ],
   providers: [],

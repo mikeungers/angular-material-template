@@ -1,3 +1,32 @@
 table {
     width: 100%;
 }
+.add-button {
+    position: absolute;
+    left: calc(100% - 46px);
+    top: 6px;
+    z-index: 10;
+}
+.table-buttons {
+    left: -8px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+table.md-table td.md-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.action-column {
+    width: 100px;
+}
+
+.type-column {
+    padding-right: 10px;
+}
