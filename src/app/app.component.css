@@ -26,4 +26,12 @@
         `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
 }
-  
+
+.menu-icon {
+    float: right;
+    padding-right: 0px;
+}
+.menu-info {
+    padding-right: 8px;
+    padding-left: 8px;
+}

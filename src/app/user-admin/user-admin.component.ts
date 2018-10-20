@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../session.service';
-
-const USER_DATA: User[] = [
-  {username: 'mustermann', password: 'secretpass', email: 'max@web.de', type: 'admin', isEdit: false},
-  {username: 'musterfrau', password: 'secretpass', email: 'erika@web.de', type: 'user', isEdit: false},
-];
+import { User, USER_DATA } from '../session.service';
 
 @Component({
   selector: 'app-user-admin',

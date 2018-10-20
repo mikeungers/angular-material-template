@@ -11,6 +11,10 @@
         <mat-icon aria-label="Benutzer">account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <div class="menu-info">
+          <span>{{sessionService.currentUser.username}}</span>
+          <mat-icon class="menu-icon">account_circle</mat-icon>
+        </div>
         <button mat-menu-item (click)=sessionService.logout()>
           <mat-icon>exit_to_app</mat-icon>
           <span>Abmelden</span>
