@@ -24,13 +24,9 @@
   </mat-toolbar>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav mode="side" class="mat-elevation-z8" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" opened>
-      <a mat-menu-item routerLink=".">
-        <mat-icon class="sidenav-icon">home</mat-icon>
-        <span>Home</span>
-      </a>
-      <a mat-menu-item routerLink="/users">
-        <mat-icon class="sidenav-icon">account_circle</mat-icon>
-        <span>Benutzer</span>
+      <a *ngFor="let route of routes" mat-menu-item [routerLink]="route.path">
+        <mat-icon class="sidenav-icon">{{route.data.iconInMenu}}</mat-icon>
+        <span>{{route.data.nameInMenu}}</span>
       </a>
     </mat-sidenav>
     <mat-sidenav-content>

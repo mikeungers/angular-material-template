@@ -20,13 +20,15 @@ import { LoginComponent } from './login/login.component';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserAdminComponent,
-    MainComponent
+    MainComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, 

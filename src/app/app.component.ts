@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { SessionService } from './session.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { routes } from './app-routing.module';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class AppComponent implements OnDestroy {
   title = 'template';
   mobileQuery: MediaQueryList;
+  public readonly routes = routes.filter(x => x.data?.showInMenu);
 
   private _mobileQueryListener: () => void;
 
