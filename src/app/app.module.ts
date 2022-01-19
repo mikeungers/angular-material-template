@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_ASYNC_VALIDATORS, NG_VALIDATORS, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -21,6 +21,18 @@ import { UserAdminComponent } from './user-admin/user-admin.component';
 import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormComponent } from './form/form.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaskModule } from 'ngx-mask';
+import { DynamicFormsCoreModule, DYNAMIC_MATCHER_PROVIDERS, DYNAMIC_VALIDATORS, Validator, ValidatorFactory } from '@ng-dynamic-forms/core';
+import { DynamicFormsMaterialUIModule } from '@ng-dynamic-forms/ui-material';
+import {
+  customAsyncValidator,
+  customDateRangeValidator,
+  customForbiddenValidator,
+  customValidator
+} from "./app.validators";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -33,9 +45,50 @@ import { FormComponent } from './form/form.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, 
     MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatMenuModule, MatTableModule, MatSelectModule,
-    FormsModule, AppRoutingModule
+    FormsModule, AppRoutingModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    NgxMaskModule.forRoot(),
+    DynamicFormsCoreModule.forRoot(),
+    DynamicFormsMaterialUIModule
   ],
-  providers: [],
+  providers: [
+    {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy
+    },
+    {
+        provide: NG_VALIDATORS,
+        useValue: customValidator,
+        multi: true
+    },
+    {
+        provide: NG_VALIDATORS,
+        useValue: customDateRangeValidator,
+        multi: true
+    },
+    {
+        provide: NG_ASYNC_VALIDATORS,
+        useValue: customAsyncValidator,
+        multi: true
+    },
+    {
+        provide: DYNAMIC_VALIDATORS,
+        useValue: new Map<string, Validator | ValidatorFactory>([
+            ["customValidator", customValidator],
+            ["customDateRangeValidator", customDateRangeValidator],
+            ["customForbiddenValidator", customForbiddenValidator],
+            ["customAsyncValidator", customAsyncValidator]
+        ])
+    },
+    ...DYNAMIC_MATCHER_PROVIDERS,
+    {
+        provide: MAT_CHIPS_DEFAULT_OPTIONS,
+        useValue: {
+            separatorKeyCodes: [13, 188]
+        }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
