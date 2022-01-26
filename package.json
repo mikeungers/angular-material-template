@@ -23,6 +23,7 @@
     "@angular/router": "~13.1.0",
     "@ng-dynamic-forms/core": "^14.0.1",
     "@ng-dynamic-forms/ui-material": "^14.0.1",
+    "luckysheet": "^2.1.13",
     "ngx-mask": "^13.1.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
