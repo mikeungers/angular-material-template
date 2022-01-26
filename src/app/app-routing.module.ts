@@ -3,6 +3,7 @@ import { MainComponent } from './main/main.component';
 import { Data, Route, RouterModule, Routes } from '@angular/router';
 import { UserAdminComponent } from './user-admin/user-admin.component';
 import { FormComponent } from './form/form.component';
+import { SheetTableComponent } from './sheet-table/sheet-table.component';
 
 export declare type CustomRoutes = CustomRoute[];
 interface CustomData extends Data {
@@ -22,6 +23,7 @@ export const routes: CustomRoutes = [
   { path: '', component: MainComponent, data: { nameInMenu: 'Home', iconInMenu: 'home', showInMenu: true, orderInMenu: 1 } },
   { path: 'users', component: UserAdminComponent, data: { nameInMenu: 'Benutzer', iconInMenu: 'account_circle', showInMenu: true, orderInMenu: 2 } },
   { path: 'form', component: FormComponent, data: { nameInMenu: 'Formular', iconInMenu: 'assignment', showInMenu: true, orderInMenu: 3 } },
+  { path: 'sheet-table', component: SheetTableComponent, data: { nameInMenu: 'Tabelle', iconInMenu: 'table', showInMenu: true, orderInMenu: 4 } },
 ];
 
 

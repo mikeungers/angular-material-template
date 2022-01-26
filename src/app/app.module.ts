@@ -33,6 +33,7 @@ import {
 } from "./app.validators";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material/chips';
+import { SheetTableComponent } from './sheet-table/sheet-table.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material/chips';
     LoginComponent,
     UserAdminComponent,
     MainComponent,
-    FormComponent
+    FormComponent,
+    SheetTableComponent
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, 
